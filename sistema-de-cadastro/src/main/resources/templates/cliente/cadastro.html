@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+
+	<section layout:fragment="corpo">
+		<div id="topo">
+			<h1 id="titulo">
+				SISTEMA TI<br> <span style="font-weight: bold">Novo
+					cadastro</span><br>
+			</h1>
+		</div>
+
+		<div id="tabela1">
+			<form
+				th:action="${cliente.codigo == null} ? @{/clientes/salvar} : @{/clientes/editar}"
+				th:object="${cliente}" method="POST">
+
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th class="c2">Nome Completo <br> <input type="text"
+								id="nome" autofocus="autofocus" th:field="*{nome}"
+								th:classappend="${#fields.hasErrors('nome')} ? 'is-invalid'" />
+								<div class="invalid-feedback">
+									<span th:errors="*{nome}"></span>
+								</div>
+							</th>
+
+							<th class="c3">Registo <br> <input id="registro"
+								type="checkbox" ng-model="registro"
+								th:field="*{registro}" value="Ativo"
+								th:classappend="${#fields.hasErrors('registro')} ? 'is-invalid'" />
+								Ativo <br> <br>
+								<div class="invalid-feedback">
+									<span th:errors="*{registro}"></span>
+								</div>
+
+							</th>
+							<th class="c5">
+								<li id="bt-cancelar"><a th:href="@{/clientes/listar}"><br>Cancelar</a></li>
+								<input id="bt-salvar" type="submit" value="Salvar cadastro" />
+							</th>
+							<br>
+						</tr>
+
+					</thead>
+				</table>
+			</form>
+		</div>
+		<h3 class="mensagem" th:replace="fragments/alert"></h3>
+	</section>
+</body>

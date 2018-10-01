@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" xmlns:layout="http://www.w3.org/1999/xhtml" ng-app="app">
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body ng-controller="HomeCtrl">
+ <div th:fragment="home">
+   
+    
+    
+<div id="topo">
+	<h1 id="titulo">Bem vindo(a) ao<br> <span style="font-weight: bold">SISTEMA TI</span><br> </h1>
+	<li><a th:href="@{/clientes/cadastrar}"><br>Novo cadastro</a> </li>
+</div>
+
+<div id="tabela">
+ 	<div  th:replace="cliente/lista :: listar"></div> 
+ 	
+</div> <br>
+
+<div>
+ <!-- AQUI são carregadas as views -->
+    <ng-view/> 
+</div>
+
+<h3 class="mensagem1" th:replace="fragments/alert"></h3>
+</body>
+</html>

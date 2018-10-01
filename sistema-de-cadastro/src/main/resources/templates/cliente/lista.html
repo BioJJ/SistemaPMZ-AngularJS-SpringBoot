@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+<head><meta charset="UTF-8"/></head>
+<body>
+<div id="topo">
+		<h1 id="titulo">Bem vindo(a) ao<br> <span style="font-weight: bold">SISTEMA TI</span><br> </h1>
+		<li><a th:href="@{/clientes/cadastrar}">Novo cadastro</a> </li>
+	</div>
+<section class="layout-content" th:fragment="listar">
+   	
+   	
+<table  class="table table-hover ">
+  <thead>
+     <tr> 
+		<th class="c1">Codigo</th> 
+		<th class="c2">Nome Completo</th> 
+		<th class="c3">Registo</th> 
+		<th class="c4"> </th> 
+	</tr>
+   </thead>
+   <tbody>
+      <tr th:each="c : ${clientes}">
+          <td th:text="${c.codigo}"></td>
+          <td th:text="${c.nome}"></td>
+          <td th:text="${{c.registro}}|"></td>
+          <td>
+          </td>
+          <td class="c4">
+             <a class="bt" th:href="@{/clientes/editar/{id} (id=${c.codigo}) }" role="button"> Editar
+           		
+       		 </a>
+        <button th:id="${#strings.concat('btn_clientes/excluir/', c.codigo) }" type="button" class="bt"
+                data-toggle="modal" data-target="#confirmarExcluir">Excluir
+        </button>
+        
+          </td>
+      </tr>    
+     </tbody>
+ </table>
+      <div th:replace="fragments/modal :: modal"></div>
+    
+ </section>
+	
+</body>
+</html>		
