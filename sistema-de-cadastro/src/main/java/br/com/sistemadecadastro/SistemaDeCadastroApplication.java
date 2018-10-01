@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SistemaDeCadastroApplication {
 
     public static void main(String[] args) {
- 
+    	//Classe principal
         SpringApplication.run(SistemaDeCadastroApplication.class, args);
     }
 }
